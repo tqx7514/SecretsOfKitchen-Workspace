@@ -1,9 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const List = () => {
-    const items = Array.from({ length: 7 });
     const navigate = useNavigate();
+    const location = useLocation();
+    const [titles, setTitles] = useState([]);
+
+    useEffect(() => {
+        if (location.state?.title) {
+            setTitles((prevTitles) => {
+                if (!prevTitles.includes(location.state.title)) {
+                    return [...prevTitles, location.state.title];
+                }
+                return prevTitles;
+            });
+        }
+    }, [location.state]);
 
     return (
         <div className="flex flex-col items-center gap-10">
@@ -13,13 +25,17 @@ const List = () => {
                     <p className="text-lg font-bold">글쓰기</p>
                 </button>
             </div>
-            {items.map((_, i) => (
-                <div key={i}>
-                    <div className="w-80 h-40 md:w-96 md:h-32 lg:w-96 lg:h-40 border border-black rounded-md p-3 text-center flex items-center justify-center">
-                        <p className="text-md font-bold">추천 레시피 목록</p>
+            {titles.length > 0 ? (
+                titles.map((title, i) => (
+                    <div key={i}>
+                        <div className="w-80 h-40 md:w-96 md:h-32 lg:w-96 lg:h-40 border border-black rounded-md p-3 text-center flex items-center justify-center">
+                            <p className="text-md font-bold">{title}</p>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))
+            ) : (
+                <p>No recipes available</p>
+            )}
         </div>
     );
 };
