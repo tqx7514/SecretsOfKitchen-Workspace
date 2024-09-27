@@ -36,7 +36,7 @@ const Layout = () => {
             </div>
 
             <footer className="border-t border-black rounded-b-2xl bg-white p-4">
-                <div className="flex justify-around items-center gap-2">
+                <div className="flex justify-around items-center px-[10%] gap-2">
                     <button onClick={() => navigate('/list')}>
                         <img src={ImgMan.get('Heart')} alt="Heart" className="w-10 h-10" />
                     </button>

@@ -8,6 +8,7 @@ import Notification from './Components/Notification';
 import MyPage from './Components/MyPage';
 import Location from './Components/Location';
 import Magnifier from './Components/Magnifier';
+import Writing from './Components/Writing';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="notification" element={<Notification />} />
                     <Route path="magnifier" element={<Magnifier />} />
                     <Route path="list" element={<List />} />
+                    <Route path="list/writing" element={<Writing />} />
                     <Route path="location" element={<Location />} />
                     <Route path="mypage" element={<MyPage />} />
                 </Route>

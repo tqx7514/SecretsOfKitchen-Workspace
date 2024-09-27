@@ -4,7 +4,7 @@ const Main = () => {
     const items = Array.from({ length: 5 });
     return (
         <div className="flex flex-col items-center gap-10">
-            <div className="w-80 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80 border border-black rounded-md p-3 text-center flex items-center justify-center">
+            <div className="w-80 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80 border border-black rounded-md p-3 text-center flex items-center justify-center mt-5">
                 <p className="text-lg font-bold">Today Recipe</p>
             </div>
 
