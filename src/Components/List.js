@@ -7,12 +7,16 @@ const List = () => {
     const [titles, setTitles] = useState([]);
 
     useEffect(() => {
+        const storedTitles = JSON.parse(localStorage.getItem('titles')) || [];
+        setTitles(storedTitles);
+    }, []);
+
+    useEffect(() => {
         if (location.state?.title) {
             setTitles((prevTitles) => {
-                if (!prevTitles.includes(location.state.title)) {
-                    return [...prevTitles, location.state.title];
-                }
-                return prevTitles;
+                const updatedTitles = [...prevTitles, location.state.title];
+                localStorage.setItem('titles', JSON.stringify(updatedTitles));
+                return updatedTitles;
             });
         }
     }, [location.state]);
